@@ -9,10 +9,9 @@ dotenv.config()
 //loads our .env file to give us access to it.
 const app = express();
 app.use(express.static("public"));
-app.get("test", (req,res)=>{
+app.get("/test", (req,res)=>{
     res.json({})
-})
-
+});
 // this is specialist syntax to get express work properly.
 const port = process.env.PORT;
 app.listen(port,()=>console.log("listening"));
