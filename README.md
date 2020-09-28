@@ -23,6 +23,49 @@ Steps to get Heroku to host a Javascript project:
 8) you can also use "git status" to check how things are going.
 9) Connect Heroku to your new github repository ("Repo").
 10) Now that we are connected to the github repo, enable "automatic update / automatic deploy" or whatever it's called in Heroku.
+11) Go to server.js, and add the following code:
+     const dotenv = require("dotenv");
+     const express = require("express");
+     dotenv.config()
+     const app = express();
+     app.use(express.static("public"));
+     const port = process.env.PORT;
+     app.listen(port,()=>console.log("listening"));
+12) install express. To do this, go to Command Prompt, go to root directory, and type "npm install express"
+13) create a file named ".env". Add the text: "PORT=3000"
+    13a) Files that start with a "." are hidden, and won't appear in finder.
+14) create a file named ".gitignore". Add the text:
+
+.env
+node_modules
+
+15) Create a folder called public in the root directory. Any file in this folder will be publically visible via heroku hosting.
+16) create a file in public called index.html, and add the code:
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jslflashcards</title>
+    <script src="client.js"></script>
+</head>
+<body>
+    Hello World
+</body>
+</html> -->
+17) create a file in public named "client.js". Write whatever code you want to run in it.
+18) push everything up to github, using Command Prompt as usual:
+
+git add .
+git commit -m "mymessage"
+git push
+
+19) you should be able to open and view your app on Heroku.
+
+//next step is to create an API to talk to the server.
+//once we can do that, we can tell a function how to store data
+//this will lead us to what database to use.
 
 
 
