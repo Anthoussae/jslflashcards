@@ -1,10 +1,11 @@
 console.log("Hello World");
 document.addEventListener("DOMContentLoaded",()=>{
     const btn = document.querySelector("button");
+    const inpt = document.querySelector("input");
     btn.addEventListener("click", ()=>{
         fetch("/records",{
             method: "post",
-            body: JSON.stringify({}),
+            body: JSON.stringify(inpt.value),
             headers: {
                 "Content-Type":"application/json"
             }
