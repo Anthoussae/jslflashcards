@@ -1,5 +1,6 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const bodyParser = require("body-parser");
 // express is the 3rd party code that we are "requiring" - aka importing.
 // require takes an argument. It will assume that you are looking in the node_modules folder.
 // if you include ./ before the path (in this case express), it will search the root directory of your project.
@@ -9,9 +10,18 @@ dotenv.config()
 //loads our .env file to give us access to it.
 const app = express();
 app.use(express.static("public"));
-app.get("/test", (req,res)=>{
-    res.json({})
+app.use(bodyParser.json());
+app.get("/records", (req,res)=>{
+    res.json([])
 });
+app.post("/records", (req,res)=>{
+    console.log(req.body);
+    res.json(req.body);
+});
+
+
+
+
 // this is specialist syntax to get express work properly.
 const port = process.env.PORT;
 app.listen(port,()=>console.log("listening"));
