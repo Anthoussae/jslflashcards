@@ -1,4 +1,3 @@
-const multiplier = require("./utils.js");
 console.log("Hello World");
 document.addEventListener("DOMContentLoaded",()=>{
     const btn = document.querySelector("button");
