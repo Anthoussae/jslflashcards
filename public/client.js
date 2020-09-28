@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     btn.addEventListener("click", ()=>{
         fetch("/records",{
             method: "post",
-            body: JSON.stringify(inpt.value),
+            body: inpt.value,
             headers: {
                 "Content-Type":"application/json"
             }
